@@ -10,21 +10,9 @@ public class HikingMap {
     int totalTime;
 
 
-    public HikingMap() throws FileNotFoundException {
-        File file = new File("C:\\Users\\stu41471\\IdeaProjects\\MapPath\\src\\hiking_challenge.dat");
-        readFile(file);
-        readMap(map);
-    }
 
-    public void readFile(File file) throws FileNotFoundException {
-        Scanner scanner = new Scanner(file);
-        for(int i = 0; i < 24; i ++){
-            String tempLine = scanner.nextLine();
-            String[] options = tempLine.split("[({ , })]");
-            for(int j = 0; j < options.length; j ++){
-                System.out.println(options[j]);
-            }
-        }
+    public HikingMap(int startX, int startY, int endX, int endY) throws FileNotFoundException {
+        readMap(map);
     }
 
     public void readMap(char thisMap [][]) throws FileNotFoundException {
@@ -34,13 +22,13 @@ public class HikingMap {
                 map[i][j] = thisMap[i][j];
                 char temp = map[i][j];
                 mapTime[i][j] = checkTime(temp);
-                System.out.println(map[i][j] + " " + mapTime[i][j]);
+                //System.out.println(map[i][j] + " " + mapTime[i][j]);
             }
         }
     }
 
     public int checkTime(char option){
-        int optionTime;
+        int optionTime = 0;
         if(option == 'T'){
             optionTime = 3;
         }
@@ -56,10 +44,6 @@ public class HikingMap {
             optionTime = 20;
         }
 
-        else{
-            System.out.println("Invalid Input: please submit something else");
-            return 0;
-        }
         return optionTime;
     }
 

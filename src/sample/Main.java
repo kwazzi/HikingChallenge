@@ -10,6 +10,6 @@ public class Main  {
 
 
     public static void main(String[] args) throws FileNotFoundException {
-        HikingMap hikingMap = new HikingMap();
+        Reader reader = new Reader();
     }
 }
