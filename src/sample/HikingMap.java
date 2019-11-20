@@ -13,6 +13,7 @@ public class HikingMap {
 
     public HikingMap(int startX, int startY, int endX, int endY) throws FileNotFoundException {
         readMap(map);
+
     }
 
     public void readMap(char thisMap [][]) throws FileNotFoundException {

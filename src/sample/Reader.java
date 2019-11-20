@@ -12,7 +12,6 @@ public class Reader {
         readFile(file);
         System.out.println(startX + "," + startY);
         System.out.println(endX + "," + endY);
-
     }
 
     public void readFile(File file) throws FileNotFoundException {
