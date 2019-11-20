@@ -16,6 +16,7 @@ public class Reader {
 
     public void readFile(File file) throws FileNotFoundException {
         Scanner scanner = new Scanner(file);
+        HikingMap temp = null;
         for(int i = 0; i < 24; i ++){
             String tempLine = scanner.nextLine();
             String[] options = tempLine.split("[({ , })]");
@@ -25,10 +26,15 @@ public class Reader {
                     startY = Integer.parseInt(options[3]);
                     endX = Integer.parseInt(options[6]);
                     endY = Integer.parseInt(options[7]);
-                    HikingMap temp = new HikingMap(startX, startY, endX, endY);
+                    temp = new HikingMap(startX, startY, endX, endY);
                 }
                 else{
                     System.out.println(options[j]);
+                    char chars[] = options[j].toCharArray();
+                    for(int k = 0; k < chars.length; k ++) {
+                        System.out.println(temp.checkTime(chars[0]));
+
+                    }
                     System.out.println("this is a path");
                 }
 
