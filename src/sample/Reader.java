@@ -2,43 +2,64 @@ package sample;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Reader {
-    int startX; int startY; int endX; int endY;
+    ArrayList<HikingMap> hikingMaps;
 
     public Reader() throws FileNotFoundException {
         File file = new File("C:\\Users\\stu41471\\IdeaProjects\\MapPath\\src\\hiking_challenge.dat");
         readFile(file);
-        System.out.println(startX + "," + startY);
-        System.out.println(endX + "," + endY);
+        findPaths();
+        System.out.println("ahaha");
     }
 
     public void readFile(File file) throws FileNotFoundException {
+        int map [][] = null;
+        hikingMaps = new ArrayList<>();
         Scanner scanner = new Scanner(file);
         HikingMap temp = null;
+        int count = 0;
+        // going through each line and splitting it using a regular expression
         for(int i = 0; i < 24; i ++){
             String tempLine = scanner.nextLine();
             String[] options = tempLine.split("[({ , })]");
+            // setting the start and end points //
             for(int j = 0; j < options.length; j ++){
                 if(i == 0 || i == 6 || i == 12 || i == 18) {
-                    startX = Integer.parseInt(options[2]);
-                    startY = Integer.parseInt(options[3]);
-                    endX = Integer.parseInt(options[6]);
-                    endY = Integer.parseInt(options[7]);
-                    temp = new HikingMap(startX, startY, endX, endY);
+                    if(i != 0){
+                        temp.setMapTime(map);
+                    }
+                    count = 0;
+                    map = new int[5][5];
+                    temp = new HikingMap();
+                    temp.setStartX(Integer.parseInt(options[2]));
+                    temp.setStartY(Integer.parseInt(options[3]));
+                    temp.setEndX(Integer.parseInt(options[6]));
+                    temp.setEndY(Integer.parseInt(options[7]));
+                    hikingMaps.add(temp);
+                    break;
                 }
+                // somehow passing each line to the hikingMap
                 else{
-                    System.out.println(options[j]);
                     char chars[] = options[j].toCharArray();
                     for(int k = 0; k < chars.length; k ++) {
-                        System.out.println(temp.checkTime(chars[0]));
-
+                        map[count][k] = temp.checkTime(chars[k]);
                     }
-                    System.out.println("this is a path");
+                    if(i == 23){
+                        temp.setMapTime(map);
+                    }
+                    count ++;
                 }
-
             }
         }
+    }
+
+    public void findPaths(){
+        for(int i = 0; i < hikingMaps.size(); i ++){
+            hikingMaps.get(i).findPath();
+        }
+
     }
 }
