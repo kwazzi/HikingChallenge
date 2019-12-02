@@ -45,7 +45,7 @@ public class Reader {
                 else{
                     char chars[] = options[j].toCharArray();
                     for(int k = 0; k < chars.length; k ++) {
-                        map[count][k] = temp.checkTime(chars[k]);
+                        map[count][k] = temp.checkTime(chars[k], count, k);
                     }
                     if(i == 23){
                         temp.setMapTime(map);

@@ -33,8 +33,10 @@ public class HikingMap {
         System.out.println("Your time to beat is " + getTotalTime() + " minutes.");
     }
 
-    public int checkTime(char option){
+    public int checkTime(char option, int xPos, int yPos){
         Node temp = new Node(getMapTime());
+        temp.setxPos(xPos);
+        temp.setyPos(yPos);
 
         int optionTime = 0;
         if(option == 'T'){
