@@ -12,6 +12,11 @@ public class Node {
 
     public void findLittleGrid(){
         if(xPos >= 1 && yPos >= 1) {
+            for(int i = 0; i < area.length; i ++){
+                for(int j = 0; j < area.length; j ++){
+                    //area[i][j] = mapTime[xPos]
+                }
+            }
             area[0][0] = mapTime[xPos - 1][yPos - 1];
             area[0][1] = mapTime[xPos - 1][yPos];
             area[0][2] = mapTime[xPos - 1][yPos + 1];
