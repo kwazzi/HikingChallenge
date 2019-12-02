@@ -30,6 +30,9 @@ public class Reader {
                 if(i == 0 || i == 6 || i == 12 || i == 18) {
                     if(i != 0){
                         temp.setMapTime(map);
+                        for(int l = 0; l < temp.getNodes().size(); l ++){
+                            temp.getNodes().get(l).setMapTime(map);
+                        }
                     }
                     count = 0;
                     map = new int[5][5];

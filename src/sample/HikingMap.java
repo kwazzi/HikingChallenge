@@ -23,7 +23,6 @@ public class HikingMap {
         for(int i = 0; i < map.length; i ++){
             for(int j = 0; j < map.length; j ++){
                 map[i][j] = thisMap[i][j];
-                char temp = map[i][j];
             }
         }
     }
@@ -34,7 +33,7 @@ public class HikingMap {
     }
 
     public int checkTime(char option, int xPos, int yPos){
-        Node temp = new Node(getMapTime());
+        Node temp = new Node(this.mapTime);
         temp.setxPos(xPos);
         temp.setyPos(yPos);
 
@@ -112,5 +111,13 @@ public class HikingMap {
 
     public void setTotalTime(int totalTime) {
         this.totalTime = totalTime;
+    }
+
+    public void setNodes(ArrayList<Node> nodes) {
+        this.nodes = nodes;
+    }
+
+    public ArrayList<Node> getNodes() {
+        return nodes;
     }
 }

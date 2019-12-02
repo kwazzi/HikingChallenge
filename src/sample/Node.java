@@ -7,10 +7,24 @@ public class Node {
 
     public Node(int mapTime[][]){
         mapTime = mapTime;
+        findLittleGrid();
     }
 
     public void findLittleGrid(){
-
+        if(xPos >= 1 && yPos >= 1) {
+            area[0][0] = mapTime[xPos - 1][yPos - 1];
+            area[0][1] = mapTime[xPos - 1][yPos];
+            area[0][2] = mapTime[xPos - 1][yPos + 1];
+            area[1][0] = mapTime[xPos][yPos - 1];
+            area[1][1] = mapTime[xPos][yPos];
+            area[1][2] = mapTime[xPos][yPos + 1];
+            area[2][0] = mapTime[xPos + 1][yPos - 1];
+            area[2][1] = mapTime[xPos + 1][yPos];
+            area[2][2] = mapTime[xPos + 1][yPos + 1];
+        }
+        else{
+            System.out.println("ahhh");
+        }
     }
 
     public int getValue() {
