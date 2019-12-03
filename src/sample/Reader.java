@@ -1,4 +1,4 @@
-package sample; 
+package sample;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,9 +27,13 @@ public class Reader {
             String[] options = tempLine.split("[({ , })]");
             // setting the start and end points //
             for(int j = 0; j < options.length; j ++){
+                // this is for each map when it starts
                 if(i == 0 || i == 6 || i == 12 || i == 18) {
+                    // this closes out all the map except for the first one
                     if(i != 0){
+                        // sets the map data for each map
                         temp.setMapTime(map);
+                        // for each node in the map, it sets the map to it
                         for(int l = 0; l < temp.getNodes().size(); l ++){
                             temp.getNodes().get(l).setMapTime(map);
                         }
@@ -37,6 +41,7 @@ public class Reader {
                     count = 0;
                     map = new int[5][5];
                     temp = new HikingMap();
+                    // getting the coordinates
                     temp.setStartX(Integer.parseInt(options[2]));
                     temp.setStartY(Integer.parseInt(options[3]));
                     temp.setEndX(Integer.parseInt(options[6]));
@@ -44,12 +49,14 @@ public class Reader {
                     hikingMaps.add(temp);
                     break;
                 }
-                // somehow passing each line to the hikingMap
+                // converting each line to their time value
+                // its for each line that only has letters
                 else{
                     char chars[] = options[j].toCharArray();
                     for(int k = 0; k < chars.length; k ++) {
-                        map[count][k] = temp.checkTime(chars[k], count, k);
+                        map[count][k] = temp.checkTime(chars[k],count, k);
                     }
+                    // this is for the last one to close it out
                     if(i == 23){
                         temp.setMapTime(map);
                     }
