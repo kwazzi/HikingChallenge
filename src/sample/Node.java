@@ -5,30 +5,24 @@ public class Node {
     int [][] area = new int[3][3];
     int mapTime[][];
 
-    public Node(int mapTime[][]){
-        mapTime = mapTime;
-        findLittleGrid();
+    public Node(){
+
     }
 
     public void findLittleGrid(){
-        if(xPos >= 1 && yPos >= 1) {
+        if(xPos >= 1 && yPos >= 1 && xPos <= 3 && yPos <= 3) {
             for(int i = 0; i < area.length; i ++){
                 for(int j = 0; j < area.length; j ++){
-                    //area[i][j] = mapTime[xPos]
+                    int a = xPos - 1 + 1;
+                    int b = j  + 1;
+                    area[i][j] = mapTime[a][b];
+                    System.out.println("yep [" + xPos + "," + yPos + "]");
                 }
             }
-            area[0][0] = mapTime[xPos - 1][yPos - 1];
-            area[0][1] = mapTime[xPos - 1][yPos];
-            area[0][2] = mapTime[xPos - 1][yPos + 1];
-            area[1][0] = mapTime[xPos][yPos - 1];
-            area[1][1] = mapTime[xPos][yPos];
-            area[1][2] = mapTime[xPos][yPos + 1];
-            area[2][0] = mapTime[xPos + 1][yPos - 1];
-            area[2][1] = mapTime[xPos + 1][yPos];
-            area[2][2] = mapTime[xPos + 1][yPos + 1];
+            setArea(this.area);
         }
         else{
-            System.out.println("ahhh");
+            System.out.println("nope [" + xPos + "," + yPos + "]");
         }
     }
 
