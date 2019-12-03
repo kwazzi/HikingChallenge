@@ -10,19 +10,22 @@ public class Node {
     }
 
     public void findLittleGrid(){
-        if(xPos >= 1 && yPos >= 1 && xPos <= 3 && yPos <= 3) {
-            for(int i = 0; i < area.length; i ++){
-                for(int j = 0; j < area.length; j ++){
-                    int a = xPos - 1 + 1;
-                    int b = j  + 1;
-                    area[i][j] = mapTime[a][b];
-                    System.out.println("yep [" + xPos + "," + yPos + "]");
+        try {
+            if (xPos >= 1 && yPos >= 1 && xPos <= 3 && yPos <= 3) {
+                for (int i = 0; i < area.length; i++) {
+                    for (int j = 0; j < area.length; j++) {
+                        int a = xPos - 1 + 1;
+                        int b = j + 1;
+                        area[i][j] = mapTime[a][b];
+                    }
                 }
+                setArea(this.area);
+            } else {
+                System.out.println("nope [" + xPos + "," + yPos + "]");
             }
-            setArea(this.area);
         }
-        else{
-            System.out.println("nope [" + xPos + "," + yPos + "]");
+        catch (NullPointerException e){
+            System.out.println("[" + xPos + "," + yPos + "]");
         }
     }
 
