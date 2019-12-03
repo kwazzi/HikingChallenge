@@ -28,14 +28,17 @@ public class HikingMap {
     }
 
     public void findPath(){
-
+        for(int i = 0; i < nodes.size(); i ++){
+            nodes.get(i).findLittleGrid();
+        }
         System.out.println("Your time to beat is " + getTotalTime() + " minutes.");
     }
 
     public int checkTime(char option, int xPos, int yPos){
-        Node temp = new Node(this.mapTime);
+        Node temp = new Node();
         temp.setxPos(xPos);
         temp.setyPos(yPos);
+
 
         int optionTime = 0;
         if(option == 'T'){
@@ -53,6 +56,8 @@ public class HikingMap {
             optionTime = 20;
         }
         temp.setValue(optionTime);
+        //temp.setMapTime(mapTime);
+        //temp.findLittleGrid();
         nodes.add(temp);
         return optionTime;
     }
