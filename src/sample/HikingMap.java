@@ -20,6 +20,7 @@ public class HikingMap {
     }
 
     public void readMap(char thisMap [][]) throws FileNotFoundException {
+        // this just fills in the current map using the data from the file
         for(int i = 0; i < map.length; i ++){
             for(int j = 0; j < map.length; j ++){
                 map[i][j] = thisMap[i][j];
@@ -28,6 +29,7 @@ public class HikingMap {
     }
 
     public void findPath(){
+        // this finds a 3x3 grid for each node, each node in the grid is a place the hiker can move
         for(int i = 0; i < nodes.size(); i ++){
             nodes.get(i).findLittleGrid();
         }
